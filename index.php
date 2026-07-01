@@ -54,3 +54,15 @@ function rechercheCategorieParCle(array $categories, string $key, string $value)
     } 
     return false;
 }
+
+function saisieChampObligatoireEtUnique(array $categories, string $smsSaisie, string $smsError, string $key): string {
+    $valueIsValid = true;
+    do {   
+        $value = saisieChaine($smsSaisie);
+        $valueIsValid = champObligatoire($value, $smsError);
+        if($valueIsValid) {     
+            $valueIsValid = rechercheCategorieParCle($categories, $key, $value);
+        }
+    } while (!$valueIsValid);
+    return $value;
+}
