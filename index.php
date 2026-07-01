@@ -33,3 +33,24 @@ function afficheCategorieSansProduit(array $categories): void {
     }
 }
 afficheCategorieSansProduit($categories);
+
+function saisieChaine(string $message): string {
+    return readline($message);  
+}
+
+function champObligatoire(string $value, string $message): bool {
+    if (empty($value)) {
+        echo $message."\n";
+        return false;
+    }
+    return true;
+}
+
+function rechercheCategorieParCle(array $categories, string $key, string $value): int|bool {
+    foreach ($categories as $index => $categorie) {
+        if (($categorie[$key]) === $value) {
+            return $index;
+        }
+    } 
+    return false;
+}
